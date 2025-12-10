@@ -26,13 +26,14 @@ int main(int argc, char *argv[]){
 		r = _div(atof(a), atof(b));
 		printf("%lf",r);
 	}
+	else if (strcmp(argv[1], "car") == 0) {
+		printf("%f\n", _car(a));
+	}
 	else {printf("Erreur de parametres");}
 	}
 	else {printf("Erreur de parametres");}
 	return 0;
     }
-    else if (strcmp(argv[1], "car") == 0) {
-    printf("%f\n", _car(a));
 }
 
 		
