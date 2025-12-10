@@ -4,40 +4,43 @@
 #include "./../include/calculator.h"
 
 int main(int argc, char *argv[]){
-    if (argc == 4)
-    {
+    double r = 0;
+
+    if (argc == 4) {
+        /* Opérations binaires : add, sub, mul, div */
         char* op = argv[1];
         char* a = argv[2];
         char* b = argv[3];
-        double r = 0;
 
-        if (strcmp(op, "add") == 0) {
-            r = _add(atof(a), atof(b));
-            printf("%lf", r);
+        if (strcmp(op, "add") == 0) r = _add(atof(a), atof(b));
+        else if (strcmp(op, "sub") == 0) r = _sub(atof(a), atof(b));
+        else if (strcmp(op, "mul") == 0) r = _mul(atof(a), atof(b));
+        else if (strcmp(op, "div") == 0) r = _div(atof(a), atof(b));
+        else { 
+            printf("Erreur de parametres\n"); 
+            return 1; 
         }
-        else if (strcmp(op, "sub") == 0) {
-            r = _sub(atof(a), atof(b));
-            printf("%lf", r);
-        }
-        else if (strcmp(op, "mul") == 0) {
-            r = _mul(atof(a), atof(b));
-            printf("%lf", r);
-        }
-        else if (strcmp(op, "div") == 0) {
-            r = _div(atof(a), atof(b));
-            printf("%lf", r);
-        }
-        /* ✅ AJOUT POUR LE CARRE */
-        else if (strcmp(op, "car") == 0) {
+
+        printf("%lf\n", r);
+    }
+    else if (argc == 3) {
+        /* Opérations unaires : car */
+        char* op = argv[1];
+        char* a = argv[2];
+
+        if (strcmp(op, "car") == 0) {
             r = _car(atof(a));
-            printf("%lf", r);
+            printf("%lf\n", r);
         }
-        else {
-            printf("Erreur de parametres");
+        else { 
+            printf("Erreur de parametres\n"); 
+            return 1; 
         }
     }
     else {
-        printf("Erreur de parametres");
+        /* Paramètres invalides */
+        printf("Erreur de parametres\n");
+        return 1;
     }
 
     return 0;
